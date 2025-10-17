@@ -1,0 +1,8 @@
+{
+  "blocked": 72,
+  "total": 73,
+  "rate": 98.63013698630137,
+  "failed": [
+    "<div style=\"background:url(javascript:alert(1))\">x</div>"
+  ]
+}
